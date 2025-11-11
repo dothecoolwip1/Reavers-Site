@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import DonationCallout from "../components/DonationCallout.astro";
+---
+<Base title="Red Deer Reavers" description="Medieval armoured combat club in Central Alberta">
+  <section class="hero">
+    <span class="tag">Medieval Armoured Combat</span>
+    <h1>Red Deer Reavers</h1>
+    <p>We are a community fight team in Central Alberta We train hard hit fair and welcome adults from all backgrounds No experience needed</p>
+    <p style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a class="btn" href="/join">Join the fight</a>
+      <a class="btn alt" href="/sport">What is this sport</a>
+    </p>
+  </section>
+
+  <section class="grid cols-3" aria-label="Quick links">
+    <div class="card">
+      <h3 style="margin-top:0;">Train with us</h3>
+      <p>Find practice nights gear advice and how to get started</p>
+      <p><a class="btn" href="/join">Start here</a></p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">Events</h3>
+      <p>See our next meetups tournaments and community demos</p>
+      <p><a class="btn" href="/events">View events</a></p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">Support the team</h3>
+      <p>Help us outfit fighters and grow a youth program</p>
+      <p><a class="btn" href="/donations">Ways to help</a></p>
+    </div>
+  </section>
+
+  <div style="margin-top:24px;">
+    <DonationCallout />
+  </div>
+</Base>

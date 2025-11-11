@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import EventCard from "../components/EventCard.astro";
+import events from "../data/events.json";
+---
+<Base title="Events" description="Practices demos and tournaments">
+  <h1>Upcoming events</h1>
+  <div class="grid cols-3">
+    {events.map((evt) => <EventCard evt={evt} />)}
+  </div>
+  <p style="margin-top:16px;">Want to host a demo Reach out on Facebook or Instagram</p>
+</Base>
