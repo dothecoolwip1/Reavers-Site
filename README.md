@@ -1,11 +1,10 @@
-Red Deer Reavers website
+Reavers Site Starter
 
-Commands
-npm install
-npm run dev
-npm run build
-
-Edit content in src/pages and src/data/events.json
-Update social links in Base.astro footer
-Set your donation links in DonationCallout.astro
-Add PDFs into public/forms
+Steps
+1. pnpm install or npm install
+2. npm run dev
+3. Connect Sanity
+   - Create project and dataset
+   - Fill .env.local using .env.example
+4. Open /studio to manage content
+5. Deploy on Vercel and set env vars
