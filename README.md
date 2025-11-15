@@ -7,4 +7,4 @@ Steps
    - Create project and dataset
    - Fill .env.local using .env.example
 4. Open /studio to manage content
-5. Deploy on Vercel and set env vars
+5. Deploy on Vercel and set env vars.
