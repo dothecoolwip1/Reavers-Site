@@ -37,6 +37,7 @@
     </header>
 
     <main class="flex-1">
+      <!-- Hero -->
       <section class="mx-auto max-w-6xl px-4 pb-8 pt-6 sm:pb-10 sm:pt-10">
         <div class="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.1fr)] lg:items-stretch">
           <div class="flex flex-col justify-between">
@@ -121,6 +122,7 @@
         </div>
       </section>
 
+      <!-- About -->
       <section id="about" class="mx-auto max-w-6xl px-4 pb-10 sm:pb-12">
         <div class="grid gap-6 md:grid-cols-3">
           <article class="rounded-2xl border border-[#c7cbd1]/30 bg-black/40 p-4 shadow-xl shadow-black/70">
@@ -161,6 +163,7 @@
         </div>
       </section>
 
+      <!-- Practice -->
       <section id="practice" class="mx-auto max-w-6xl px-4 pb-10 sm:pb-12">
         <div class="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)]">
           <article class="rounded-2xl border border-[#c7cbd1]/30 bg-black/40 p-4 shadow-xl shadow-black/70">
@@ -228,6 +231,7 @@
         </div>
       </section>
 
+      <!-- Events -->
       <section id="events" class="mx-auto max-w-6xl px-4 pb-10 sm:pb-12">
         <div class="grid gap-6 md:grid-cols-2">
           <article class="rounded-2xl border border-[#c7cbd1]/30 bg-black/40 p-4 shadow-xl shadow-black/70">
@@ -259,56 +263,15 @@
         </div>
       </section>
 
+      <!-- Gallery preview -->
       <section id="gallery" class="mx-auto max-w-6xl px-4 pb-10 sm:pb-12">
         <h2 class="mb-3 text-lg font-semibold text-white">Gallery</h2>
         <p class="mb-4 text-sm">
           A quick look at a few shots. Tap any photo or use the button to open the full gallery.
         </p>
 
-        <div class="mb-4 grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          <button type="button" class="group overflow-hidden rounded-2xl border border-[#c7cbd1]/25 bg-black/40"
-                  data-gallery-thumb
-                  data-gallery-index="0">
-            <img
-              src="assets/image (1).jpg"
-              alt="Reavers image 1"
-              class="h-32 w-full object-cover transition-transform group-hover:scale-105"
-              loading="lazy"
-            />
-          </button>
-
-          <button type="button" class="group overflow-hidden rounded-2xl border border-[#c7cbd1]/25 bg-black/40"
-                  data-gallery-thumb
-                  data-gallery-index="1">
-            <img
-              src="assets/image (2).jpg"
-              alt="Reavers image 2"
-              class="h-32 w-full object-cover transition-transform group-hover:scale-105"
-              loading="lazy"
-            />
-          </button>
-
-          <button type="button" class="group overflow-hidden rounded-2xl border border-[#c7cbd1]/25 bg-black/40"
-                  data-gallery-thumb
-                  data-gallery-index="2">
-            <img
-              src="assets/image (3).jpg"
-              alt="Reavers image 3"
-              class="h-32 w-full object-cover transition-transform group-hover:scale-105"
-              loading="lazy"
-            />
-          </button>
-
-          <button type="button" class="group overflow-hidden rounded-2xl border border-[#c7cbd1]/25 bg-black/40"
-                  data-gallery-thumb
-                  data-gallery-index="3">
-            <img
-              src="assets/image (4).jpg"
-              alt="Reavers image 4"
-              class="h-32 w-full object-cover transition-transform group-hover:scale-105"
-              loading="lazy"
-            />
-          </button>
+        <div id="galleryPreview" class="mb-4 grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          <!-- Filled by script from galleryImages -->
         </div>
 
         <button
@@ -320,6 +283,7 @@
         </button>
       </section>
 
+      <!-- Join -->
       <section id="join" class="mx-auto max-w-6xl px-4 pb-12">
         <div class="grid gap-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <article class="rounded-2xl border border-[#c7cbd1]/30 bg-black/40 p-4 shadow-xl shadow-black/70">
@@ -368,7 +332,7 @@
     </footer>
   </div>
 
-  <!-- Universal gallery popup -->
+  <!-- Full gallery popup with small versions of every photo and arrows -->
   <div id="lightboxGallery"
        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 px-4">
     <button id="galleryClose"
@@ -385,18 +349,23 @@
       ›
     </button>
 
-    <div class="flex max-h-[90vh] max-w-[90vw] flex-col items-center justify-center">
+    <div class="flex max-h-[90vh] max-w-[90vw] flex-col items-center justify-center gap-3">
       <img id="galleryImage"
            src=""
            alt=""
-           class="mb-3 max-h-[80vh] max-w-full object-contain shadow-2xl shadow-black" />
+           class="mb-1 max-h-[55vh] max-w-full object-contain shadow-2xl shadow-black" />
       <div id="galleryCaption" class="text-xs text-[#c7cbd1]">
         Image
+      </div>
+      <div id="galleryThumbStrip"
+           class="mt-1 grid max-h-[22vh] w-full grid-auto-rows-[72px] grid-cols-4 gap-2 overflow-y-auto sm:grid-cols-6 lg:grid-cols-8">
+        <!-- Thumbnails filled by script -->
       </div>
     </div>
   </div>
 
   <script>
+    // Gallery image list: add any new jpg here and it will show everywhere
     const galleryImages = [
       "assets/image (1).jpg",
       "assets/image (2).jpg",
@@ -428,12 +397,16 @@
     const galleryClose = document.getElementById("galleryClose");
     const galleryPrev = document.getElementById("galleryPrev");
     const galleryNext = document.getElementById("galleryNext");
-    const thumbButtons = document.querySelectorAll("[data-gallery-thumb]");
+    const galleryThumbStrip = document.getElementById("galleryThumbStrip");
     const openGalleryButton = document.querySelector("[data-open-gallery]");
+    const mainPreview = document.getElementById("galleryPreview");
+    const thumbButtonsInline = document.querySelectorAll("[data-gallery-thumb]");
 
     let currentIndex = 0;
 
     function showGallery(index) {
+      if (galleryImages.length === 0) return;
+
       if (index < 0) {
         index = galleryImages.length - 1;
       } else if (index >= galleryImages.length) {
@@ -445,6 +418,16 @@
       galleryCaption.textContent = "Image " + (currentIndex + 1) + " of " + galleryImages.length;
       lightboxGallery.classList.remove("hidden");
       lightboxGallery.classList.add("flex");
+
+      const thumbs = galleryThumbStrip.querySelectorAll("[data-gallery-full-index]");
+      thumbs.forEach(function (thumb) {
+        const idx = parseInt(thumb.getAttribute("data-gallery-full-index"), 10);
+        if (idx === currentIndex) {
+          thumb.classList.add("outline", "outline-2", "outline-[#d05621]");
+        } else {
+          thumb.classList.remove("outline", "outline-2", "outline-[#d05621]");
+        }
+      });
     }
 
     function hideGallery() {
@@ -453,12 +436,63 @@
       galleryImage.src = "";
     }
 
-    thumbButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const index = parseInt(btn.getAttribute("data-gallery-index"), 10) || 0;
-        showGallery(index);
+    // Build main gallery preview from first few images
+    if (mainPreview) {
+      const previewCount = Math.min(8, galleryImages.length);
+      for (let i = 0; i < previewCount; i += 1) {
+        const src = galleryImages[i];
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "group overflow-hidden rounded-2xl border border-[#c7cbd1]/25 bg-black/40";
+        btn.setAttribute("data-gallery-thumb", "");
+        btn.setAttribute("data-gallery-index", String(i));
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Reavers image " + (i + 1);
+        img.loading = "lazy";
+        img.className = "h-32 w-full object-cover transition-transform group-hover:scale-105";
+
+        btn.appendChild(img);
+        mainPreview.appendChild(btn);
+      }
+    }
+
+    // Build thumbnail strip inside popup for every image
+    if (galleryThumbStrip) {
+      galleryThumbStrip.innerHTML = "";
+      galleryImages.forEach(function (src, index) {
+        const thumbBtn = document.createElement("button");
+        thumbBtn.type = "button";
+        thumbBtn.className = "overflow-hidden rounded-lg border border-[#c7cbd1]/40 bg-black/60";
+        thumbBtn.setAttribute("data-gallery-full-index", String(index));
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Reavers image " + (index + 1);
+        img.loading = "lazy";
+        img.className = "h-18 w-full object-cover";
+
+        thumbBtn.appendChild(img);
+        thumbBtn.addEventListener("click", function () {
+          showGallery(index);
+        });
+        galleryThumbStrip.appendChild(thumbBtn);
       });
-    });
+    }
+
+    // Clicks from inline thumbs (hero, practice, preview)
+    function attachThumbHandlers() {
+      const thumbs = document.querySelectorAll("[data-gallery-thumb]");
+      thumbs.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const index = parseInt(btn.getAttribute("data-gallery-index") || "0", 10);
+          showGallery(index);
+        });
+      });
+    }
+
+    attachThumbHandlers();
 
     if (openGalleryButton) {
       openGalleryButton.addEventListener("click", function () {
