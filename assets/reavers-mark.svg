@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" role="img" aria-labelledby="title">
-  <title id="title">Red Deer Reavers shield mark</title>
-  <path fill="#10091f" stroke="#f0a36f" stroke-width="5" d="M60 5 107 24v46c0 32-17 53-47 65C30 123 13 102 13 70V24Z"/>
-  <path fill="none" stroke="#d8d1dd" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="M50 50 33 33m17 17-2-23m22 23 17-17M70 50l2-23M49 51c-9 8-12 19-9 29 4 13 15 24 20 31 5-7 16-18 20-31 3-10 0-21-9-29"/>
-  <path fill="#730707" stroke="#f0a36f" stroke-width="4" d="M60 48c-13 0-22 10-22 23 0 14 9 26 22 39 13-13 22-25 22-39 0-13-9-23-22-23Z"/>
-  <path fill="#d8d1dd" d="M48 65h8v8h-8zm16 0h8v8h-8z"/>
-  <path fill="none" stroke="#d8d1dd" stroke-width="4" stroke-linecap="round" d="M51 84c5 4 13 4 18 0"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" role="img" aria-labelledby="t"><title id="t">Red Deer Reavers crest</title><path d="M80 6 146 30v58c0 43-24 70-66 86C38 158 14 131 14 88V30Z" fill="#120a18"/><path d="M80 11 140 33v53c0 39-21 63-60 78-39-15-60-39-60-78V33Z" fill="none" stroke="#ff6d1f" stroke-width="7"/><path d="M63 69 43 47m20 22-2-33m36 33 20-22M97 69l2-33M61 70C48 82 46 100 54 116c7 14 18 23 26 31 8-8 19-17 26-31 8-16 6-34-7-46" fill="none" stroke="#f3efe9" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/><path d="M80 66c-18 0-31 14-31 32 0 20 13 36 31 52 18-16 31-32 31-52 0-18-13-32-31-32Z" fill="#2c143a" stroke="#ff6d1f" stroke-width="5"/><path d="M61 90h13v10H61zm25 0h13v10H86z" fill="#f3efe9"/><path d="M65 116h30" stroke="#f3efe9" stroke-width="6"/><path d="M80 74v50" stroke="#ff6d1f" stroke-width="4" opacity=".7"/></svg>
