@@ -257,3 +257,130 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }body[data-page="team"] .desktop-nav a[href="team.html"],body[data-page="training"] .desktop-nav a[href="training.html"],body[data-page="events"] .desktop-nav a[href="events.html"],body[data-page="media"] .desktop-nav a[href="media.html"]{color:var(--orange-2)}
+
+/* Team Hub v4 */
+.club-hero{position:relative;min-height:440px;display:grid;align-items:end;overflow:hidden;background:#0b0710}
+.club-hero-media,.club-hero-shade{position:absolute;inset:0}
+.club-hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.club-hero-shade{background:linear-gradient(180deg,rgba(7,4,10,.08) 0%,rgba(7,4,10,.22) 34%,rgba(7,4,10,.84) 76%,#0b0710 100%),linear-gradient(90deg,rgba(8,5,12,.35),transparent 70%)}
+.club-hero-content{position:relative;z-index:2;padding:72px 0 28px}
+.club-season{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:8px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(9,6,13,.62);backdrop-filter:blur(10px);font-size:.66rem;font-weight:950;letter-spacing:.1em}
+.club-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.club-title-row h1{margin:0;font-size:clamp(3.7rem,18vw,5.8rem)}
+.hero-crest{width:72px;height:84px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.28))}
+.club-tagline{margin:10px 0 17px;font-size:1.08rem;font-weight:850;letter-spacing:-.01em}
+.team-center{padding:22px 0 46px;background:#0b0710}
+.team-center-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}
+.team-center-head h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2.35rem;font-weight:400;line-height:.95;text-transform:uppercase}
+.team-center-head>a{flex:0 0 auto;color:var(--orange-2);font-size:.7rem;font-weight:950;letter-spacing:.05em;text-transform:uppercase}
+.team-center-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.team-status-card{min-width:0;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:#151019}
+.team-status-primary{grid-column:1/-1;background:var(--paper);color:var(--ink);border-color:transparent}
+.team-status-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.team-status-label{display:flex;align-items:center;gap:7px;color:var(--orange-2);font-size:.62rem;font-weight:950;letter-spacing:.09em;text-transform:uppercase}
+.team-status-primary .team-status-label{color:#9b4318}
+.team-status-date{color:#6f6572;font-size:.66rem;font-weight:900}
+.team-status-card h3{margin:11px 0 4px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2rem;font-weight:400;line-height:.96;text-transform:uppercase}
+.team-status-card>p,.team-status-card small{color:#a69ba9;font-size:.76rem;line-height:1.35}
+.team-status-primary>p{margin:0;color:#645a66}
+.team-status-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+.team-status-actions a{display:grid;place-items:center;min-height:42px;border-radius:11px;background:#171019;color:#fff;font-size:.69rem;font-weight:950;text-transform:uppercase}
+.team-status-actions a:first-child{background:var(--orange);color:#160a0d}
+.hub-empty{display:flex;gap:9px;align-items:flex-start;margin-top:12px}
+.hub-empty strong,.hub-empty small{display:block}
+.hub-empty strong{font-size:.85rem;line-height:1.15}
+.hub-empty small{margin-top:4px;color:#918696;font-size:.7rem;line-height:1.3}
+.status-dot{flex:0 0 8px;width:8px;height:8px;margin-top:4px;border-radius:50%;background:var(--orange)}
+.muted-dot{background:#6f6575}
+.hub-live{display:grid;gap:3px;margin-top:12px}
+.hub-live .hub-kicker{color:var(--orange-2);font-size:.64rem;font-weight:950;text-transform:uppercase}
+.hub-live strong{font-size:.9rem}
+.hub-live small{color:#918696}
+.status-link{display:inline-block;margin-top:12px;color:var(--orange-2);font-size:.68rem;font-weight:950;text-transform:uppercase}
+.team-status-mini .team-mini-value{margin-top:10px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2rem;line-height:1}
+.team-status-mini p{margin:5px 0 0}
+.season-section{padding:48px 0;background:var(--paper);color:var(--ink)}
+.compact-head{margin-bottom:16px}
+.season-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.season-tile{display:flex;min-height:170px;flex-direction:column;padding:16px;border-radius:17px;background:#fff;border:1px solid rgba(20,14,24,.08)}
+.season-tile span{color:#a74419;font-size:.62rem;font-weight:950;letter-spacing:.1em}
+.season-tile strong{margin-top:16px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2.4rem;font-weight:400;line-height:1;text-transform:uppercase}
+.season-tile p{margin:7px 0 0;color:#685e6b;font-size:.76rem;line-height:1.3}
+.season-tile b{margin-top:auto;padding-top:12px;color:#9c4017;font-size:.68rem}
+.updates-section{padding:48px 0;background:#100b15}
+.news-grid{display:grid;gap:9px}
+.news-card{display:block;padding:17px;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:#17111d}
+.news-card span{color:var(--orange-2);font-size:.62rem;font-weight:950;letter-spacing:.1em;text-transform:uppercase}
+.news-card h3{margin:10px 0 5px;font-size:1rem}
+.news-card p{margin:0;color:#a99ead;font-size:.8rem;line-height:1.4}
+.news-card b{display:inline-block;margin-top:12px;color:var(--orange-2);font-size:.68rem;text-transform:uppercase}
+.roster-feature{padding:50px 0;background:#f2eee8;color:#151018}
+.roster-feature-grid{display:grid;gap:12px}
+.roster-photo{min-height:280px;border-radius:19px;overflow:hidden}
+.roster-photo img{width:100%;height:100%;object-fit:cover}
+.roster-copy{padding:4px 2px}
+.roster-copy h2{margin:0 0 10px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2.7rem;font-weight:400;line-height:.92;text-transform:uppercase}
+.roster-copy>p{margin:0;color:#645a67;font-size:.88rem}
+.roster-role-list{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}
+.roster-role-list span{padding:7px 10px;border-radius:999px;background:#e7dfd7;color:#4d4450;font-size:.67rem;font-weight:850}
+.training-home{padding:48px 0;background:#0b0710}
+.training-home-card{padding:20px;border-radius:20px;background:#2d1539;border:1px solid rgba(255,255,255,.1)}
+.training-home-card h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2rem;font-weight:400;text-transform:uppercase}
+.training-times{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:17px 0}
+.training-times div{padding:13px;border-radius:13px;background:rgba(255,255,255,.06)}
+.training-times span,.training-times strong,.training-times small{display:block}
+.training-times span{color:var(--orange-2);font-size:.64rem;font-weight:950}
+.training-times strong{margin-top:2px;font-size:1.05rem}
+.training-times small{color:#aaa0ad;font-size:.67rem}
+.training-facts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.training-facts span{padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.06);color:#bdb3c1;font-size:.67rem}
+.training-facts b{color:#fff}
+.support-home{padding:0 0 52px;background:#0b0710}
+.roster-page-intro{padding:36px 0 12px;background:#0b0710}
+.roster-page-intro h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2.6rem;font-weight:400;text-transform:uppercase}
+.roster-page-intro p{color:#aaa0ad}
+.roster-grid{display:grid;gap:10px}
+.roster-card{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:#17111d}
+.roster-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.roster-card>div{padding:15px}
+.roster-card span{color:var(--orange-2);font-size:.63rem;font-weight:950;text-transform:uppercase}
+.roster-card h3{margin:6px 0 3px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:1.7rem;font-weight:400;text-transform:uppercase}
+.roster-card p{margin:0;color:#9d92a1;font-size:.78rem}
+.roster-empty{padding:18px;border:1px dashed rgba(255,255,255,.18);border-radius:18px;background:#141019}
+.roster-empty strong{font-size:1rem}
+.roster-empty p{margin:6px 0;color:#9f94a3;font-size:.82rem}
+.roster-empty a{color:var(--orange-2);font-size:.7rem;font-weight:950;text-transform:uppercase}
+.results-block{display:grid;gap:10px}
+.results-empty{padding:18px;border-radius:17px;background:#fff;color:#151018}
+.results-empty h3{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:1.9rem;font-weight:400;text-transform:uppercase}
+.results-empty p{margin:6px 0 0;color:#675d69;font-size:.82rem}
+
+@media(min-width:760px){
+  .club-hero{min-height:620px}
+  .club-hero-content{padding:140px 0 60px}
+  .club-title-row h1{font-size:clamp(6rem,11vw,9rem)}
+  .hero-crest{width:120px;height:140px}
+  .club-tagline{font-size:1.35rem}
+  .team-center{padding:30px 0 72px}
+  .team-center-head h2{font-size:3.2rem}
+  .team-center-grid{grid-template-columns:1.35fr .85fr .85fr .7fr}
+  .team-status-primary{grid-column:auto}
+  .team-status-card{min-height:210px;display:flex;flex-direction:column}
+  .team-status-actions,.status-link{margin-top:auto}
+  .season-section,.updates-section,.roster-feature,.training-home{padding:72px 0}
+  .season-grid{grid-template-columns:repeat(4,1fr)}
+  .season-tile{min-height:210px}
+  .news-grid{grid-template-columns:repeat(3,1fr)}
+  .roster-feature-grid{grid-template-columns:1.15fr .85fr;align-items:stretch}
+  .roster-photo{min-height:430px}
+  .roster-copy{display:flex;flex-direction:column;justify-content:center;padding:30px}
+  .training-home-card{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;padding:28px}
+  .training-times{margin:0}
+  .training-facts{grid-column:1/-1;margin:0}
+  .training-home-card>.btn{justify-self:start}
+  .roster-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:1100px){
+  .team-center-grid{gap:12px}
+  .season-grid,.news-grid{gap:12px}
+}
