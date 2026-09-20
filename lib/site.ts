@@ -21,6 +21,7 @@ export const navItems = [
   { href: "/events", label: "Events" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
+  { href: "/support", label: "Support" },
   { href: "/join", label: "Join" },
 ];
 
