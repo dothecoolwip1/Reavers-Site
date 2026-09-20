@@ -17,7 +17,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;padding-bottom:86px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;padding-bottom:112px}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font:inherit}
@@ -33,7 +33,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .app-header{position:sticky;top:0;z-index:80;background:rgba(11,7,16,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .header-inner{height:62px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:9px;min-width:0}
-.brand img{width:34px;height:40px}
+.brand img{width:42px;height:42px;object-fit:contain;border-radius:8px}
 .brand-copy{display:grid;line-height:1}
 .brand-copy strong{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:1.15rem;letter-spacing:.06em}
 .brand-copy small{margin-top:5px;color:#978b9c;font-size:.56rem;letter-spacing:.13em;font-weight:800}
@@ -72,7 +72,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .section.light{background:var(--paper);color:var(--ink)}
 .section.purple{background:linear-gradient(160deg,var(--purple-deep),#180c20)}
 .section-head{display:grid;gap:8px;margin-bottom:20px}
-.section-head h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:clamp(2.7rem,13vw,4rem);font-weight:400;line-height:.92;text-transform:uppercase}
+.section-head h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:clamp(2.15rem,10vw,3.15rem);font-weight:400;line-height:.96;text-transform:uppercase}
 .section-head p:last-child{margin:0;color:var(--muted);font-size:.94rem}
 .light .section-head p:last-child{color:#655b68}
 .section-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:var(--orange);font-size:.76rem;font-weight:950;letter-spacing:.05em;text-transform:uppercase}
@@ -113,7 +113,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,5,12,.15),rgba(8,5,12,.88) 80%,#0b0710)}
 .page-hero-content{position:relative;z-index:2;padding:92px 0 26px}
-.page-hero h1{margin:0;font-size:clamp(4rem,21vw,6.5rem)}
+.page-hero h1{margin:0;font-size:clamp(3.4rem,17vw,5.4rem)}
 .page-hero p:last-child{margin:8px 0 0;max-width:600px;color:#d2c9d5;font-size:.92rem}
 .card-grid{display:grid;gap:10px}
 .info-card{padding:18px;border-radius:18px;background:#fff;color:var(--ink);border:1px solid rgba(18,12,22,.08)}
@@ -147,9 +147,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .progress-list{display:grid;gap:0}
 .progress-step{display:grid;grid-template-columns:42px 1fr;gap:12px;padding:15px 0;border-top:1px solid rgba(20,14,24,.12)}
 .progress-step:first-child{border-top:0}
-.progress-step .n{color:#a4431a;font-size:.7rem;font-weight:950}
+.progress-step .n{color:var(--orange-2);font-size:.7rem;font-weight:950}
 .progress-step h3{margin:0 0 4px;font-size:.95rem}
-.progress-step p{margin:0;color:#6b616d;font-size:.82rem}
+.progress-step p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.5}
 .join-card{padding:20px;border-radius:22px;background:var(--surface);border:1px solid var(--line)}
 .join-card h2{margin:0 0 8px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2.7rem;font-weight:400;text-transform:uppercase;line-height:.95}
 .join-card>p{color:var(--muted);font-size:.86rem}
@@ -188,11 +188,11 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .footer-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px}
 .footer-links a{color:#b5aabd;font-size:.76rem;font-weight:800}
 .footer-meta{margin-top:24px;padding-top:14px;border-top:1px solid var(--line);color:#726879;font-size:.67rem}
-.mobile-dock{position:fixed;z-index:90;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:6px;background:rgba(15,10,20,.92);border:1px solid rgba(255,255,255,.11);border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.4);backdrop-filter:blur(18px)}
-.mobile-dock a{position:relative;display:grid;grid-template-rows:20px auto;place-items:center;gap:3px;min-height:50px;border-radius:15px;color:#a99ead;font-size:.59rem;font-weight:900;letter-spacing:.03em}.mobile-dock svg{width:20px;height:20px}.mobile-dock a[aria-current="page"] svg{color:var(--orange-2)}
-.mobile-dock a[aria-current="page"]{color:#fff;background:rgba(255,255,255,.07)}
-.mobile-dock .dock-join{background:var(--orange);color:#150a0d;font-size:.65rem}
-.mobile-dock .dock-join[aria-current="page"]{background:var(--orange);color:#150a0d}
+.mobile-dock{position:fixed;z-index:90;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:4px;background:rgba(15,10,20,.94);border:1px solid rgba(255,255,255,.1);border-radius:18px;box-shadow:0 14px 38px rgba(0,0,0,.38);backdrop-filter:blur(18px)}
+.mobile-dock a{position:relative;display:grid;grid-template-rows:19px auto;place-items:center;gap:3px;min-height:46px;border-radius:13px;color:#a99ead;font-size:.58rem;font-weight:900;letter-spacing:.03em}.mobile-dock svg{width:19px;height:19px}.mobile-dock a[aria-current="page"] svg{color:var(--orange-2)}
+.mobile-dock a[aria-current="page"]{color:#fff;background:rgba(255,107,26,.12)}
+.mobile-dock .dock-join{background:transparent;color:#c3b8c7;font-size:.62rem}.mobile-dock .dock-join svg{color:var(--orange-2)}
+.mobile-dock .dock-join[aria-current="page"]{background:rgba(255,107,26,.14);color:#fff}
 @media(min-width:760px){
   body{padding-bottom:0}
   .shell{width:min(100% - 48px,1180px)}
@@ -265,13 +265,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .club-hero-shade{background:linear-gradient(180deg,rgba(7,4,10,.08) 0%,rgba(7,4,10,.22) 34%,rgba(7,4,10,.84) 76%,#0b0710 100%),linear-gradient(90deg,rgba(8,5,12,.35),transparent 70%)}
 .club-hero-content{position:relative;z-index:2;padding:72px 0 28px}
 .club-season{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;padding:8px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(9,6,13,.62);backdrop-filter:blur(10px);font-size:.66rem;font-weight:950;letter-spacing:.1em}
-.club-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-.club-title-row h1{margin:0;font-size:clamp(3.7rem,18vw,5.8rem)}
-.hero-crest{width:72px;height:84px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.28))}
+.club-title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}.club-title-row>div{min-width:0;flex:1}
+.club-title-row h1{margin:0;font-size:clamp(3.25rem,15.5vw,4.8rem);letter-spacing:0}
+.hero-crest{display:none;width:88px;height:88px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.28))}
 .club-tagline{margin:10px 0 17px;font-size:1.08rem;font-weight:850;letter-spacing:-.01em}
 .team-center{padding:22px 0 46px;background:#0b0710}
 .team-center-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}
-.team-center-head h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:2.35rem;font-weight:400;line-height:.95;text-transform:uppercase}
+.team-center-head h2{margin:0;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:1.85rem;font-weight:400;line-height:1;text-transform:uppercase}
 .team-center-head>a{flex:0 0 auto;color:var(--orange-2);font-size:.7rem;font-weight:950;letter-spacing:.05em;text-transform:uppercase}
 .team-center-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .team-status-card{min-width:0;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:#151019}
@@ -359,7 +359,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   .club-hero{min-height:620px}
   .club-hero-content{padding:140px 0 60px}
   .club-title-row h1{font-size:clamp(6rem,11vw,9rem)}
-  .hero-crest{width:120px;height:140px}
+  .hero-crest{display:block;width:120px;height:120px;object-fit:contain}
   .club-tagline{font-size:1.35rem}
   .team-center{padding:30px 0 72px}
   .team-center-head h2{font-size:3.2rem}
@@ -383,4 +383,29 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(min-width:1100px){
   .team-center-grid{gap:12px}
   .season-grid,.news-grid{gap:12px}
+}
+
+/* Mobile polish: unify training page with the Reavers dark visual system */
+@media(max-width:759px){
+  .app-header{background:rgba(11,7,16,.95)}
+  .header-inner{height:68px}
+  .header-social{min-height:36px;padding:0 13px}
+  .club-hero{min-height:520px}
+  .club-hero-content{padding:72px 0 34px}
+  .club-tagline{font-size:1rem}
+  .team-center{padding-top:30px}
+  .team-center-head{align-items:flex-start}
+  .team-center-head>a{padding-top:4px}
+  body[data-page="training"] .section.light{background:#15101a;color:var(--text);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  body[data-page="training"] .section.light .section-head p:last-child{color:var(--muted)}
+  body[data-page="training"] .check-list{gap:10px}
+  body[data-page="training"] .check-item{background:#1b1422;color:var(--text);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:15px}
+  body[data-page="training"] .check-item span{color:#aaa1ad}
+  body[data-page="training"] .check-icon{background:rgba(255,107,26,.14);color:var(--orange-2)}
+  body[data-page="training"] .schedule-card{border-radius:18px}
+  body[data-page="training"] .progress-step{padding:18px 0}
+  body[data-page="training"] .progress-step h3{font-size:1rem}
+  body[data-page="training"] .section{padding:46px 0}
+  body[data-page="training"] .section-head{margin-bottom:22px}
+  #start{scroll-margin-top:78px}
 }
