@@ -1,7 +1,7 @@
 document.querySelectorAll("[data-year]").forEach(el=>{el.textContent=String(new Date().getFullYear())});
 
 function edmontonNow(){
-  const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Edmonton",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).formatToParts(new Date());
+  const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Edmonton",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
   const map=Object.fromEntries(parts.map(p=>[p.type,p.value]));
   return new Date(Number(map.year),Number(map.month)-1,Number(map.day),Number(map.hour),Number(map.minute),Number(map.second));
 }
@@ -48,7 +48,7 @@ function openGallery(index){
   if(galleryDialog&&!galleryDialog.open)galleryDialog.showModal();
 }
 if(galleryGrid){
-  galleryGrid.innerHTML=galleryImages.map((src,index)=>`<button class="gallery-button" type="button" data-gallery-index="${index}" aria-label="Open Reavers photo ${index+1}"><img src="${src}" alt="Red Deer Reavers photo ${index+1}" loading="${index<4?"eager":"lazy"}" decoding="async"></button>`).join("");
+  galleryGrid.innerHTML=galleryImages.map((src,index)=>`<button class="gallery-button" type="button" data-gallery-index="${index}" aria-label="Open Reavers photo ${index+1}"><img src="${src}" alt="Red Deer Reavers photo ${index+1}" loading="${index<2?"eager":"lazy"}" decoding="async"></button>`).join("");
   galleryGrid.addEventListener("click",event=>{
     const button=event.target.closest("[data-gallery-index]");
     if(button)openGallery(Number(button.dataset.galleryIndex));
