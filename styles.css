@@ -576,3 +576,35 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   .path-cards{grid-template-columns:1fr 1fr}
   .path-card:last-child{grid-column:1/-1}
 }
+
+
+/* Simpler training lists: no fake checkbox or numbered badge UI */
+.bring-item{
+  display:block;
+  padding:15px 16px;
+}
+.bring-icon{display:none!important}
+.bring-item b{
+  font-size:.96rem;
+}
+.bring-item p{
+  margin-top:4px;
+}
+.path-card{
+  display:block;
+  position:relative;
+  padding:15px 16px 15px 18px;
+  border-left:3px solid rgba(255,107,26,.7);
+  background:#15101a;
+}
+.path-card>span{display:none!important}
+.path-card h3{
+  font-size:1rem;
+  margin-bottom:5px;
+}
+.path-card p{
+  font-size:.81rem;
+}
+@media(min-width:520px){
+  .bring-grid{grid-template-columns:1fr 1fr}
+}
