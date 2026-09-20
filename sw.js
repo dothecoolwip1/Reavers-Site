@@ -1,4 +1,4 @@
-const CACHE="reavers-team-hub-v8";
+const CACHE="reavers-team-hub-v9";
 const SHELL=["./","./index.html","./team.html","./training.html","./events.html","./media.html","./styles.css","./dynamic.css","./team-data.js","./app.js","./manifest.webmanifest","./assets/reavers-logo.jpg"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)));self.skipWaiting()});
 self.addEventListener("activate",event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim()});
