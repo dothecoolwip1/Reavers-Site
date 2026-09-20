@@ -92,7 +92,7 @@
     if (roster.length) {
       rosterGrid.innerHTML = roster.map(member => {
         const initials = String(member.name || "R").split(/\s+/).map(part => part[0]).join("").slice(0, 2).toUpperCase();
-        const media = member.photo ? `<img src="${escapeHtml(member.photo)}" alt="${escapeHtml(member.name)}" loading="lazy" decoding="async">` : `<div class="roster-placeholder" aria-hidden="true"><img src="assets/reavers-mark.svg" alt=""><b>${escapeHtml(initials)}</b></div>`;
+        const media = member.photo ? `<img src="${escapeHtml(member.photo)}" alt="${escapeHtml(member.name)}" loading="lazy" decoding="async">` : `<div class="roster-placeholder" aria-hidden="true"><img src="assets/reavers-logo.jpg" alt=""><b>${escapeHtml(initials)}</b></div>`;
         return `<article class="roster-card">${media}<div><span>${escapeHtml(member.role || "Team member")}</span><h3>${escapeHtml(member.name)}</h3>${member.discipline ? `<p>${escapeHtml(member.discipline)}</p>` : ""}${member.bio ? `<small class="roster-bio">${escapeHtml(member.bio)}</small>` : ""}${member.isExample ? `<em class="sample-profile">Sample profile</em>` : ""}</div></article>`;
       }).join("");
     } else {
