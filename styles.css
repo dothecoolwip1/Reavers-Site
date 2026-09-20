@@ -409,3 +409,170 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   body[data-page="training"] .section-head{margin-bottom:22px}
   #start{scroll-margin-top:78px}
 }
+
+
+/* Training page structural redesign */
+.first-practice-section{
+  background:#100b14;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.first-practice-heading,
+.progression-heading{
+  display:grid;
+  gap:8px;
+  margin-bottom:18px;
+}
+.first-practice-heading h2,
+.progression-heading h2{
+  margin:0;
+  font-size:clamp(1.85rem,8vw,2.7rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  font-weight:850;
+  text-transform:none;
+}
+.first-practice-heading>p,
+.progression-heading>p{
+  margin:0;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.5;
+}
+.bring-panel{
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;
+  background:#18111e;
+}
+.bring-panel-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:#d8cfdc;
+  font-size:.66rem;
+  letter-spacing:.09em;
+}
+.bring-panel-top strong{font-size:.66rem}
+.bring-panel-top span{color:#8f8494}
+.bring-grid{display:grid}
+.bring-item{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:11px;
+  align-items:start;
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.bring-item:first-child{border-top:0}
+.bring-icon{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:rgba(255,107,26,.12);
+  color:var(--orange-2);
+  font-size:.65rem;
+  font-weight:950;
+}
+.bring-item b{
+  display:block;
+  margin:1px 0 3px;
+  font-size:.93rem;
+}
+.bring-item p{
+  margin:0;
+  color:#9f95a4;
+  font-size:.79rem;
+  line-height:1.42;
+}
+.progression-section{background:#0b0710}
+.training-overview{display:grid;gap:14px}
+.training-schedule-card{margin:0}
+.schedule-card-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+.schedule-card-head span{
+  display:block;
+  margin-bottom:2px;
+  color:var(--orange-2);
+  font-size:.62rem;
+  font-weight:950;
+  letter-spacing:.1em;
+}
+.schedule-card-head h3{
+  margin:0;
+  font-size:1.3rem;
+  line-height:1.05;
+}
+.schedule-card-head a{
+  flex:0 0 auto;
+  padding:8px 11px;
+  border-radius:10px;
+  background:rgba(255,107,26,.12);
+  color:var(--orange-2);
+  font-size:.66rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.path-cards{display:grid;gap:8px}
+.path-card{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:12px;
+  align-items:start;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:15px;
+  background:#15101a;
+}
+.path-card>span{
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:#24172c;
+  color:var(--orange-2);
+  font-size:.7rem;
+  font-weight:950;
+}
+.path-card h3{
+  margin:0 0 4px;
+  font-size:.98rem;
+  line-height:1.2;
+}
+.path-card p{
+  margin:0;
+  color:#9f95a4;
+  font-size:.8rem;
+  line-height:1.45;
+}
+@media(min-width:520px){
+  .bring-grid{grid-template-columns:1fr 1fr}
+  .bring-item:nth-child(2){border-top:0}
+  .bring-item:nth-child(even){border-left:1px solid rgba(255,255,255,.07)}
+}
+@media(min-width:760px){
+  .first-practice-heading,.progression-heading{
+    grid-template-columns:minmax(0,.9fr) minmax(280px,.6fr);
+    align-items:end;
+    gap:36px;
+  }
+  .first-practice-heading h2,.progression-heading h2{font-size:3.2rem}
+  .bring-grid{grid-template-columns:repeat(4,1fr)}
+  .bring-item{border-top:0;border-left:1px solid rgba(255,255,255,.07)}
+  .bring-item:first-child{border-left:0}
+  .training-overview{grid-template-columns:.85fr 1.15fr;gap:18px;align-items:start}
+  .path-cards{grid-template-columns:1fr 1fr}
+  .path-card:last-child{grid-column:1/-1}
+}
