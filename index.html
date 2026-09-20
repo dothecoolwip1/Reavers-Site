@@ -1,125 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Reavers Site Options</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10091f">
+  <meta name="description" content="Red Deer Reavers is Central Alberta's Buhurt and armored combat team. Learn the sport, see practice details, browse team photos, and come try a practice.">
+  <meta property="og:title" content="Red Deer Reavers | Buhurt in Central Alberta">
+  <meta property="og:description" content="Full contact armored combat, real steel, hard training, and a team built in Central Alberta.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/gallery/image%20(1).jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Red Deer Reavers | Buhurt in Central Alberta</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/reavers-mark.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/gallery/image%20(1).jpg">
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<body class="min-h-screen bg-[#0f0830] text-[#c7cbd1]">
-  <div class="flex min-h-screen flex-col"
-       style="background-image: radial-gradient(circle at top, #1e0e4f 0, #0f0830 45%, #050308 100%);">
+  <header class="site-header" data-header>
+    <div class="shell nav-shell">
+      <a class="brand" href="#top" aria-label="Red Deer Reavers home">
+        <img src="assets/reavers-mark.svg" width="46" height="52" alt="">
+        <span>
+          <strong>Red Deer Reavers</strong>
+          <small>Central Alberta Buhurt</small>
+        </span>
+      </a>
 
-    <!-- Header -->
-    <header class="sticky top-0 z-20 border-b border-[#c7cbd1]/20 bg-[#0f0830]/95 backdrop-blur">
-      <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <div class="flex items-center gap-2">
-          <div class="flex h-10 w-10 items-center justify-center rounded-full
-                      bg-gradient-to-tr from-[#1e0e4f] via-[#730707] to-[#d05621]
-                      text-white font-bold shadow-md shadow-black/60">
-            RD
-          </div>
-          <div>
-            <p class="text-[0.55rem] uppercase tracking-[0.25em] text-[#c7cbd1]">Red Deer</p>
-            <p class="text-sm font-bold uppercase tracking-[0.18em] text-white">Reavers</p>
-          </div>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-button>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" data-menu>
+        <a href="#sport">The sport</a>
+        <a href="#practice">Practice</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#join">Try a practice</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="shell hero-content">
+        <p class="eyebrow">Red Deer, Alberta • Established 2024</p>
+        <h1>Forged in battle.<br><span>Built as a team.</span></h1>
+        <p class="hero-copy">Full contact armored combat with real steel, real pressure, and a crew that trains together from first practice to tournament day.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#join">Come try it</a>
+          <a class="button button-ghost" href="#sport">What is Buhurt?</a>
         </div>
-        <p class="text-[0.6rem] uppercase tracking-[0.22em] text-[#c7cbd1]">Site Options</p>
+        <div class="hero-facts" aria-label="Team highlights">
+          <div><strong>18+</strong><span>Current fighter program</span></div>
+          <div><strong>2× weekly</strong><span>Regular practices</span></div>
+          <div><strong>Beginner friendly</strong><span>No experience required</span></div>
+        </div>
       </div>
-    </header>
+      <a class="scroll-cue" href="#sport" aria-label="Scroll to learn more">↓</a>
+    </section>
 
-    <!-- Main -->
-    <main class="flex-1">
-      <section class="mx-auto max-w-5xl px-4 pt-8 pb-14">
-
-        <h1 class="mb-6 text-center text-2xl font-bold text-white">
-          Choose Your Website Layout
-        </h1>
-
-        <!-- Grid of 4 options -->
-        <div class="grid gap-6 md:grid-cols-2">
-
-          <!-- OPTION 1 -->
-          <a href="option1.html"
-             class="group block rounded-2xl border border-[#c7cbd1]/25 bg-[#1e0e4f]/30 
-                    p-4 shadow-lg shadow-black/50 hover:bg-[#1e0e4f]/60 hover:shadow-2xl hover:shadow-black/70
-                    transition-all">
-            <div class="aspect-video rounded-xl bg-[#0f0830] border border-[#c7cbd1]/20 
-                        flex items-center justify-center text-[#c7cbd1] text-sm">
-              Preview of Option 1
-            </div>
-
-            <h2 class="mt-3 text-lg font-bold text-white group-hover:text-[#d05621]">
-              Option 1
-            </h2>
-            <p class="text-sm text-[#c7cbd1]">
-              A clean, traditional scrolling layout with hero, sections, and strong color accents.
-            </p>
-          </a>
-
-          <!-- OPTION 2 -->
-          <a href="option2.html"
-             class="group block rounded-2xl border border-[#c7cbd1]/25 bg-[#730707]/30 
-                    p-4 shadow-lg shadow-black/50 hover:bg-[#730707]/60 hover:shadow-2xl hover:shadow-black/70
-                    transition-all">
-            <div class="aspect-video rounded-xl bg-[#0f0830] border border-[#c7cbd1]/20 
-                        flex items-center justify-center text-[#c7cbd1] text-sm">
-              Preview of Option 2
-            </div>
-
-            <h2 class="mt-3 text-lg font-bold text-white group-hover:text-[#d05621]">
-              Option 2
-            </h2>
-            <p class="text-sm text-[#c7cbd1]">
-              A high-impact hero-first design with bold typography and wide panels.
-            </p>
-          </a>
-
-          <!-- OPTION 3 -->
-          <a href="option3.html"
-             class="group block rounded-2xl border border-[#c7cbd1]/25 bg-[#d05621]/20 
-                    p-4 shadow-lg shadow-black/50 hover:bg-[#d05621]/40 hover:shadow-2xl hover:shadow-black/70
-                    transition-all">
-            <div class="aspect-video rounded-xl bg-[#0f0830] border border-[#c7cbd1]/20 
-                        flex items-center justify-center text-[#c7cbd1] text-sm">
-              Preview of Option 3
-            </div>
-
-            <h2 class="mt-3 text-lg font-bold text-white group-hover:text-[#730707]">
-              Option 3
-            </h2>
-            <p class="text-sm text-[#c7cbd1]">
-              A minimalistic, super clean layout focusing on readability and mobile-first UX.
-            </p>
-          </a>
-
-          <!-- OPTION 4 -->
-          <a href="option4.html"
-             class="group block rounded-2xl border border-[#c7cbd1]/25 bg-black/20 
-                    p-4 shadow-lg shadow-black/50 hover:bg-black/40 hover:shadow-2xl hover:shadow-black/70
-                    transition-all">
-            <div class="aspect-video rounded-xl bg-[#0f0830] border border-[#c7cbd1]/20 
-                        flex items-center justify-center text-[#c7cbd1] text-sm">
-              Preview of Option 4
-            </div>
-
-            <h2 class="mt-3 text-lg font-bold text-white group-hover:text-[#d05621]">
-              Option 4
-            </h2>
-            <p class="text-sm text-[#c7cbd1]">
-              A grid-heavy modern layout perfect for team photos and media-rich content.
-            </p>
-          </a>
-
+    <section class="section section-intro" id="sport">
+      <div class="shell split-intro">
+        <div>
+          <p class="eyebrow">This is Buhurt</p>
+          <h2>Medieval armor. Modern combat sport.</h2>
         </div>
-      </section>
-    </main>
+        <div class="lead-copy">
+          <p>Buhurt is a full contact combat sport fought in historically inspired steel armor with blunted steel weapons. Fighters strike, grapple, clinch, trip, and work as a team inside a fenced list.</p>
+          <p>You do not need a martial arts background, your own armor, or tournament experience to start. You need curiosity, a willingness to learn, and enough patience to build the skills safely.</p>
+        </div>
+      </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-[#c7cbd1]/20 py-4 text-center text-[0.7rem] text-[#c7cbd1]">
-      Red Deer Reavers · Choose your layout
-    </footer>
-  </div>
+      <div class="shell feature-grid">
+        <article class="feature-card">
+          <span class="feature-number">01</span>
+          <h3>Learn first</h3>
+          <p>New people start with movement, conditioning, controlled drills, footwork, and safe contact before armor becomes the focus.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">02</span>
+          <h3>Gear up gradually</h3>
+          <p>Limited loaner gear can help you try the sport when fit permits. Nobody needs to buy a full kit just to see whether Buhurt is for them.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">03</span>
+          <h3>Train for the list</h3>
+          <p>Practices build conditioning, striking, grappling, rail work, communication, and the decision making that matters in a live fight.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">04</span>
+          <h3>Compete when ready</h3>
+          <p>The team attends Buhurt events in Alberta and beyond. Competition is a goal, not a requirement for belonging at practice.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="image-break" aria-label="Red Deer Reavers fighters">
+      <img src="assets/gallery/image (7).jpg" alt="Red Deer Reavers armored fighters training together" loading="lazy">
+      <div class="image-break-copy shell"><p>Train • Fight • Represent</p></div>
+    </section>
+
+    <section class="section" id="practice">
+      <div class="shell section-heading">
+        <div>
+          <p class="eyebrow">Your first practice</p>
+          <h2>Show up curious. We will walk you through the rest.</h2>
+        </div>
+        <p>You are welcome to watch, ask questions, try soft kit drills, and move at a pace that makes sense. The goal of a first visit is to understand the sport, not prove anything.</p>
+      </div>
+
+      <div class="shell practice-layout">
+        <article class="schedule-card">
+          <div class="schedule-topline"><span>Regular training</span><span class="status-dot">Active</span></div>
+          <h3>Springbrook Archery Centre</h3>
+          <div class="schedule-row"><span>Wednesday</span><strong>5:30 PM to 8:00 PM</strong></div>
+          <div class="schedule-row"><span>Sunday</span><strong>5:00 PM to 8:00 PM</strong></div>
+          <div class="schedule-note"><strong>$10 venue fee</strong><span>per person, per indoor practice</span></div>
+          <a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=Springbrook+Archery+Centre+Alberta" target="_blank" rel="noreferrer">Open in Maps</a>
+        </article>
+
+        <div class="practice-steps">
+          <article><span>1</span><div><h3>Message us first</h3><p>We will confirm that practice is running and tell you what to bring.</p></div></article>
+          <article><span>2</span><div><h3>Come in normal gym gear</h3><p>Comfortable clothes, indoor shoes, water, and any questions you have are enough for a first visit.</p></div></article>
+          <article><span>3</span><div><h3>Try the basics</h3><p>Start with movement and controlled drills. You can sit out anything you are not ready for.</p></div></article>
+          <article><span>4</span><div><h3>Commit only if it fits</h3><p>If you want to keep training, we help map out insurance, equipment, conditioning, and a realistic path toward armor.</p></div></article>
+        </div>
+      </div>
+
+      <div class="shell practice-meta">
+        <div><span>HACSA insurance</span><strong>$100 once committed</strong></div>
+        <div><span>Experience</span><strong>Not required</strong></div>
+        <div><span>Loaner gear</span><strong>Limited, fit dependent</strong></div>
+        <div><span>Current program</span><strong>Adults 18+</strong></div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="events">
+      <div class="shell section-heading">
+        <div>
+          <p class="eyebrow">Events and demos</p>
+          <h2>Fight nights, tournaments, and community demos.</h2>
+        </div>
+        <p>We compete when the calendar allows and we also bring armored combat into the community through demonstrations, photo opportunities, and educational events.</p>
+      </div>
+
+      <div class="shell event-grid" data-events></div>
+
+      <div class="shell demo-callout">
+        <div>
+          <p class="eyebrow">Bring the Reavers to your event</p>
+          <h3>Schools, community groups, birthdays, markets, and local events.</h3>
+          <p>We can tailor a demo around armored combat, historical equipment, sport rules, controlled demonstrations, and meet a knight style photo opportunities.</p>
+        </div>
+        <a class="button button-primary" href="mailto:reddeerreavers@gmail.com?subject=Reavers%20Demo%20Inquiry">Ask about a demo</a>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell section-heading gallery-heading">
+        <div>
+          <p class="eyebrow">Inside the list</p>
+          <h2>Real practices. Real armor. Real team.</h2>
+        </div>
+        <button class="text-button" type="button" data-open-gallery="0">View all photos →</button>
+      </div>
+      <div class="shell gallery-grid" data-gallery-grid></div>
+    </section>
+
+    <section class="section section-dark" id="faq">
+      <div class="shell faq-layout">
+        <div class="faq-heading">
+          <p class="eyebrow">Newcomer FAQ</p>
+          <h2>Questions you should ask before your first practice.</h2>
+          <p>There is no expectation that you already understand the sport. Ask everything.</p>
+        </div>
+        <div class="faq-list" data-faq-list></div>
+      </div>
+    </section>
+
+    <section class="section support-section" id="support">
+      <div class="shell support-grid">
+        <div class="support-copy">
+          <p class="eyebrow">Support the team</p>
+          <h2>Help keep armored combat growing in Central Alberta.</h2>
+          <p>The Red Deer Reavers Guild is volunteer run. Sponsorships and community support help with training equipment, event costs, travel, outreach, and future growth.</p>
+          <a class="button button-secondary" href="mailto:reddeerreavers@gmail.com?subject=Reavers%20Sponsorship%20Inquiry">Sponsor or support us</a>
+        </div>
+        <div class="support-photo"><img src="assets/gallery/image (12).jpg" alt="Red Deer Reavers team member in armor" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="join-section" id="join">
+      <div class="shell join-grid">
+        <div class="join-copy">
+          <p class="eyebrow">Ready to see it in person?</p>
+          <h2>Your first practice can just be a first practice.</h2>
+          <p>Send us a quick note. We will confirm the next session, answer questions, and help you figure out whether Buhurt is something you want to keep doing.</p>
+          <div class="social-links" aria-label="Red Deer Reavers social links">
+            <a href="https://www.facebook.com/profile.php?id=61566406838469" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/red_deer_reavers/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://discord.gg/6aXEkuR4x3" target="_blank" rel="noreferrer">Discord</a>
+          </div>
+        </div>
+
+        <form class="join-form" data-join-form>
+          <div class="field-row">
+            <label><span>Name</span><input name="name" autocomplete="name" required></label>
+            <label><span>Best way to reach you</span><input name="contact" autocomplete="email" placeholder="Email or phone" required></label>
+          </div>
+          <label>
+            <span>What are you interested in?</span>
+            <select name="interest">
+              <option>Trying a practice</option>
+              <option>Watching a practice first</option>
+              <option>Competing eventually</option>
+              <option>Booking a demo</option>
+              <option>Sponsorship or partnership</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label><span>Message</span><textarea name="message" rows="5" placeholder="Tell us anything useful, including your experience level or questions."></textarea></label>
+          <button class="button button-primary button-wide" type="submit">Create message</button>
+          <p class="form-note">This opens your email app with the message filled in. Nothing is stored on this website.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <img src="assets/reavers-mark.svg" width="58" height="66" alt="">
+        <div><strong>Red Deer Reavers</strong><span>Buhurt in Central Alberta</span></div>
+      </div>
+      <div class="footer-links">
+        <a href="#sport">The sport</a>
+        <a href="#practice">Practice</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#join">Join</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:reddeerreavers@gmail.com">reddeerreavers@gmail.com</a>
+        <span>Red Deer area, Alberta</span>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© <span data-year></span> Red Deer Reavers Guild</span>
+      <span>Built for the list.</span>
+    </div>
+  </footer>
+
+  <a class="mobile-join" href="#join">Try a practice</a>
+
+  <dialog class="gallery-dialog" data-gallery-dialog>
+    <button class="dialog-close" type="button" data-gallery-close aria-label="Close gallery">×</button>
+    <button class="dialog-nav dialog-prev" type="button" data-gallery-prev aria-label="Previous photo">‹</button>
+    <figure>
+      <img src="" alt="" data-gallery-image>
+      <figcaption data-gallery-caption></figcaption>
+    </figure>
+    <button class="dialog-nav dialog-next" type="button" data-gallery-next aria-label="Next photo">›</button>
+  </dialog>
+
+  <script src="app.js" defer></script>
 </body>
 </html>
