@@ -54,6 +54,7 @@
     renderEventList();
     renderRoster();
     renderPractices();
+    renderCommunityInquiries();
     renderSettings();
   }
 
@@ -95,7 +96,7 @@
     const list=$("[data-roster-manage-list]");
     const roster=[...(state.data?.roster||[])].sort((a,b)=>(Number(a.sort_order)||0)-(Number(b.sort_order)||0)||String(a.name).localeCompare(String(b.name)));
     if(!roster.length){list.innerHTML='<div class="empty-state">No roster members yet.</div>';return}
-    list.innerHTML=roster.map(m=>`<article class="manage-row">${m.photo_url?`<img class="member-thumb" src="${esc(m.photo_url)}" alt="">`:`<img class="member-thumb placeholder" src="assets/reavers-logo.jpg" alt="">`}<div class="manage-row-main"><strong>${esc(m.name)}</strong><span>${esc(m.role||"Team member")}${m.discipline?` · ${esc(m.discipline)}`:""}</span>${m.is_example?'<span class="badge">SAMPLE PROFILE</span>':""}${!m.active?'<span class="badge inactive">HIDDEN</span>':""}</div><div class="manage-row-actions"><button type="button" class="small-button" data-edit-roster="${esc(m.id)}">Edit</button><button type="button" class="small-button delete" data-delete-roster="${esc(m.id)}">Delete</button></div></article>`).join("");
+    list.innerHTML=roster.map(m=>`<article class="manage-row">${m.photo_url?`<img class="member-thumb" src="${esc(m.photo_url)}" alt="">`:`<img class="member-thumb placeholder" src="assets/reavers-logo.jpg" alt="">`}<div class="manage-row-main"><strong>${esc(m.name)}</strong><span>${esc(m.role||"Team member")}${m.discipline?` · ${esc(m.discipline)}`:""}${m.experience_years!==null&&m.experience_years!==undefined?` · ${esc(m.experience_years)}+ yrs`:""}</span>${m.affiliations?`<small>${esc(m.affiliations)}</small>`:""}${m.is_example?'<span class="badge">SAMPLE PROFILE</span>':""}${!m.active?'<span class="badge inactive">NOT SHOWN</span>':'<span class="badge visible">SHOWN ON SITE</span>'}</div><div class="manage-row-actions"><button type="button" class="small-button" data-edit-roster="${esc(m.id)}">Edit</button><button type="button" class="small-button delete" data-delete-roster="${esc(m.id)}">Delete</button></div></article>`).join("");
   }
 
   function renderPractices(){
@@ -103,6 +104,28 @@
     const practices=[...(state.data?.practices||[])].sort((a,b)=>(Number(a.sort_order)||0)-(Number(b.sort_order)||0)||Number(a.weekday)-Number(b.weekday));
     if(!practices.length){list.innerHTML='<div class="empty-state">No recurring practices set.</div>';return}
     list.innerHTML=practices.map(p=>`<article class="manage-row"><div class="manage-row-main"><strong>${esc(p.label)} · ${esc(timeShort(p.start_time))} to ${esc(timeShort(p.end_time))}</strong><span>${esc(p.venue)}${p.fee?` · ${esc(p.fee)}`:""}</span>${!p.active?'<span class="badge inactive">HIDDEN</span>':""}</div><div class="manage-row-actions"><button type="button" class="small-button" data-edit-practice="${esc(p.id)}">Edit</button><button type="button" class="small-button delete" data-delete-practice="${esc(p.id)}">Delete</button></div></article>`).join("");
+  }
+
+  function renderCommunityInquiries(){
+    const list=$("[data-community-inquiries]");
+    if(!list)return;
+    const inquiries=[...(state.data?.communityInquiries||[])];
+    const count=$("[data-community-count]");
+    if(count)count.textContent=inquiries.length?`${inquiries.length} total`:"None yet";
+    if(!inquiries.length){list.innerHTML='<div class="empty-state">No community inquiries yet.</div>';return}
+    list.innerHTML=inquiries.map(i=>{
+      const created=i.created_at?new Intl.DateTimeFormat("en-CA",{month:"short",day:"numeric",year:"numeric"}).format(new Date(i.created_at)):"";
+      const eventDate=i.event_date?dateLabel(i.event_date):"Date not set";
+      const size=i.audience_size?` · about ${esc(i.audience_size)} people`:"";
+      return `<article class="inquiry-row">
+        <div class="inquiry-head"><div><span class="inquiry-type">${esc(String(i.event_type||"community event").replaceAll("_"," "))}</span><strong>${esc(i.name)}</strong><small>${esc(i.organization||"")}</small></div><span class="inquiry-created">${esc(created)}</span></div>
+        <div class="inquiry-meta"><b>${esc(i.contact)}</b><span>${esc(eventDate)}${i.location?` · ${esc(i.location)}`:""}${size}</span></div>
+        ${i.details?`<p>${esc(i.details)}</p>`:""}
+        <div class="inquiry-actions"><select data-inquiry-status="${esc(i.id)}" aria-label="Inquiry status">
+          ${["new","contacted","booked","closed","declined"].map(s=>`<option value="${s}"${i.status===s?" selected":""}>${s[0].toUpperCase()+s.slice(1)}</option>`).join("")}
+        </select><button type="button" class="small-button delete" data-delete-inquiry="${esc(i.id)}">Delete</button></div>
+      </article>`;
+    }).join("");
   }
 
   function renderSettings(){
@@ -146,9 +169,11 @@
         <label>Name<input name="name" maxlength="120" value="${esc(v.name||"")}" required></label>
         <div class="field-row"><label>Role<input name="role" maxlength="120" value="${esc(v.role||"Team member")}" placeholder="Fighter, Squire, Team Ops..."></label><label>Sort order<input type="number" name="sort_order" value="${esc(v.sort_order??0)}"></label></div>
         <label>Discipline / specialty<input name="discipline" maxlength="180" value="${esc(v.discipline||"")}" placeholder="Melee, duels, armour support..."></label>
+        <div class="field-row"><label>Years of experience<input type="number" min="0" max="80" name="experience_years" value="${esc(v.experience_years??"")}" placeholder="Optional"></label><label>Affiliations<input name="affiliations" maxlength="500" value="${esc(v.affiliations||"")}" placeholder="HACSA, teams, organizations..."></label></div>
+        <label>Experience / highlights<textarea name="experience_summary" maxlength="1000" placeholder="Coaching, tournaments, roles, specialties...">${esc(v.experience_summary||"")}</textarea></label>
         <label>Short bio<textarea name="bio" maxlength="1500">${esc(v.bio||"")}</textarea></label>
         <label>Photo URL, optional<input name="photo_url" maxlength="1200" value="${esc(v.photo_url||"")}" placeholder="https://..."></label>
-        <label class="toggle-row"><span>Show on public roster</span><input type="checkbox" name="active"${v.active!==false?" checked":""}></label>
+        <label class="toggle-row"><span><b>Show on website</b><small>Turn this off to keep the member in Admin without showing their public profile.</small></span><input type="checkbox" name="active"${v.active!==false?" checked":""}></label>
         <label class="toggle-row"><span>Mark as sample profile</span><input type="checkbox" name="is_example"${v.is_example?" checked":""}></label>`;
     }
     if(type==="practice"){
@@ -170,7 +195,7 @@
     const editor=state.editor;if(!editor)return;
     const form=$("[data-editor-form]");const fd=new FormData(form);let item={id:editor.item?.id};
     if(editor.type==="event")item={...item,title:fd.get("title"),event_type:fd.get("event_type"),event_date:fd.get("event_date"),start_time:fd.get("start_time"),end_time:fd.get("end_time"),location:fd.get("location"),details:fd.get("details"),href:fd.get("href"),is_public:fd.get("is_public")==="on"};
-    if(editor.type==="roster")item={...item,name:fd.get("name"),role:fd.get("role"),discipline:fd.get("discipline"),bio:fd.get("bio"),photo_url:fd.get("photo_url"),active:fd.get("active")==="on",is_example:fd.get("is_example")==="on",sort_order:Number(fd.get("sort_order")||0)};
+    if(editor.type==="roster")item={...item,name:fd.get("name"),role:fd.get("role"),discipline:fd.get("discipline"),experience_years:fd.get("experience_years"),affiliations:fd.get("affiliations"),experience_summary:fd.get("experience_summary"),bio:fd.get("bio"),photo_url:fd.get("photo_url"),active:fd.get("active")==="on",is_example:fd.get("is_example")==="on",sort_order:Number(fd.get("sort_order")||0)};
     if(editor.type==="practice")item={...item,weekday:Number(fd.get("weekday")),label:fd.get("label"),start_time:fd.get("start_time"),end_time:fd.get("end_time"),venue:fd.get("venue"),fee:fd.get("fee"),active:fd.get("active")==="on",sort_order:Number(fd.get("sort_order")||0)};
     try{
       $("[data-dialog-message]").textContent="Saving…";
@@ -207,6 +232,20 @@
     const deleteEvent=event.target.closest("[data-delete-event]");if(deleteEvent){deleteItem("event",deleteEvent.dataset.deleteEvent);return}
     const deleteRoster=event.target.closest("[data-delete-roster]");if(deleteRoster){deleteItem("roster",deleteRoster.dataset.deleteRoster);return}
     const deletePractice=event.target.closest("[data-delete-practice]");if(deletePractice){deleteItem("practice",deletePractice.dataset.deletePractice);return}
+    const deleteInquiry=event.target.closest("[data-delete-inquiry]");if(deleteInquiry){
+      if(confirm("Delete this community inquiry? This cannot be undone.")){
+        api({action:"community_inquiry_delete",id:deleteInquiry.dataset.deleteInquiry}).then(()=>loadData()).then(()=>showToast("Inquiry deleted")).catch(error=>showToast(error.message));
+      }
+      return;
+    }
+  });
+  document.addEventListener("change",event=>{
+    const select=event.target.closest("[data-inquiry-status]");
+    if(!select)return;
+    api({action:"community_inquiry_status",id:select.dataset.inquiryStatus,status:select.value})
+      .then(()=>loadData())
+      .then(()=>showToast("Inquiry updated"))
+      .catch(error=>showToast(error.message));
   });
   $("[data-editor-form]").addEventListener("submit",event=>{event.preventDefault();saveEditor()});
   $("[data-dialog-close]").addEventListener("click",closeEditor);

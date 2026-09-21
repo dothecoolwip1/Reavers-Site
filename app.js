@@ -93,7 +93,10 @@
       rosterGrid.innerHTML = roster.map(member => {
         const initials = String(member.name || "R").split(/\s+/).map(part => part[0]).join("").slice(0, 2).toUpperCase();
         const media = member.photo ? `<img src="${escapeHtml(member.photo)}" alt="${escapeHtml(member.name)}" loading="lazy" decoding="async">` : `<div class="roster-placeholder" aria-hidden="true"><img src="assets/reavers-logo.jpg" alt=""><b>${escapeHtml(initials)}</b></div>`;
-        return `<article class="roster-card">${media}<div><span>${escapeHtml(member.role || "Team member")}</span><h3>${escapeHtml(member.name)}</h3>${member.discipline ? `<p>${escapeHtml(member.discipline)}</p>` : ""}${member.bio ? `<small class="roster-bio">${escapeHtml(member.bio)}</small>` : ""}${member.isExample ? `<em class="sample-profile">Sample profile</em>` : ""}</div></article>`;
+        const experience = member.experienceYears !== null && member.experienceYears !== undefined && member.experienceYears !== "" ? `<span class="roster-experience">${escapeHtml(member.experienceYears)}+${Number(member.experienceYears) === 1 ? " year" : " years"} experience</span>` : "";
+        const affiliations = member.affiliations ? `<div class="roster-affiliations"><b>Affiliations</b><span>${escapeHtml(member.affiliations)}</span></div>` : "";
+        const highlights = member.experienceSummary ? `<small class="roster-highlights">${escapeHtml(member.experienceSummary)}</small>` : "";
+        return `<article class="roster-card">${media}<div><div class="roster-card-top"><span>${escapeHtml(member.role || "Team member")}</span>${experience}</div><h3>${escapeHtml(member.name)}</h3>${member.discipline ? `<p>${escapeHtml(member.discipline)}</p>` : ""}${affiliations}${highlights}${member.bio ? `<small class="roster-bio">${escapeHtml(member.bio)}</small>` : ""}${member.isExample ? `<em class="sample-profile">Sample profile</em>` : ""}</div></article>`;
       }).join("");
     } else {
       rosterGrid.innerHTML = `<div class="roster-empty"><strong>Roster profiles are coming.</strong><p>The team can add fighters, support crew and leadership from the admin page.</p></div>`;
@@ -156,7 +159,53 @@
     window.location.href = `mailto:${TEAM.contactEmail || "reddeerreavers@gmail.com"}?subject=${subject}&body=${body}`;
   });
 
+  const communityForm = document.querySelector("[data-community-form]");
+  communityForm?.addEventListener("submit", async event => {
+    event.preventDefault();
+    const status = document.querySelector("[data-community-form-status]");
+    const button = communityForm.querySelector('button[type="submit"]');
+    const data = new FormData(communityForm);
+    const item = {
+      name: String(data.get("name") || "").trim(),
+      organization: String(data.get("organization") || "").trim(),
+      contact: String(data.get("contact") || "").trim(),
+      event_type: String(data.get("event_type") || "community_event"),
+      event_date: String(data.get("event_date") || ""),
+      location: String(data.get("location") || "").trim(),
+      audience_size: String(data.get("audience_size") || ""),
+      details: String(data.get("details") || "").trim()
+    };
+    const website = String(data.get("website") || "");
+    if (!item.name || !item.contact) {
+      if (status) status.textContent = "Please add your name and a way for us to contact you.";
+      return;
+    }
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Sending…";
+    }
+    if (status) status.textContent = "Sending your inquiry…";
+    try {
+      const response = await fetch(window.REAVERS_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "community_inquiry_submit", item, website })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Could not send inquiry");
+      communityForm.reset();
+      if (status) status.textContent = "Thanks. Your inquiry is with the Reavers team now. We will follow up using the contact you provided.";
+      if (button) button.textContent = "Inquiry sent";
+    } catch (error) {
+      if (status) status.textContent = "We could not send that right now. You can still email reddeerreavers@gmail.com.";
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Try again";
+      }
+    }
+  });
+
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js?v=10", { updateViaCache: "none" }).then(registration => registration.update()).catch(() => {}));
+    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js?v=11", { updateViaCache: "none" }).then(registration => registration.update()).catch(() => {}));
   }
 })();

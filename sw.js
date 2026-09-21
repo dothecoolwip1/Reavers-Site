@@ -1,4 +1,4 @@
-const CACHE="reavers-team-hub-v10";
+const CACHE="reavers-team-hub-v11";
 const STATIC=["./assets/reavers-logo.jpg"];
 
 self.addEventListener("install",event=>{

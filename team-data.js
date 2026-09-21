@@ -20,7 +20,7 @@
     updates: [
       { tag: "Recruiting", title: "New fighters are welcome", copy: "No armour or combat experience is required to start. Come meet the team and try the basics first.", href: "training.html#start", cta: "Start here" },
       { tag: "Training", title: "Two team practices every week", copy: "Wednesday evenings and Sunday evenings at Springbrook Archery Centre.", href: "training.html", cta: "Training details" },
-      { tag: "Community", title: "Book the Reavers", copy: "Armoured combat demos, school sessions, markets, festivals, birthdays and community events.", href: "events.html#demos", cta: "Demo options" }
+      { tag: "Community", title: "Book the Reavers", copy: "Armoured combat demos, school sessions, markets, festivals, birthdays and community events.", href: "community.html", cta: "Community options" }
     ]
   };
 
@@ -100,6 +100,9 @@
           role: member.role,
           discipline: member.discipline || "",
           bio: member.bio || "",
+          experienceYears: member.experience_years ?? null,
+          affiliations: member.affiliations || "",
+          experienceSummary: member.experience_summary || "",
           photo: member.photo_url || "",
           isExample: Boolean(member.is_example)
         }))
