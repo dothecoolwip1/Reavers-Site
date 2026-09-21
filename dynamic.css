@@ -13,6 +13,6 @@
 .public-event-date{display:flex;flex-direction:column;gap:5px;padding-right:12px;border-right:1px solid rgba(20,14,24,.1)}
 .public-event-date strong{font-size:.86rem}.public-event-date span{color:#6f6572;font-size:.68rem;line-height:1.3}
 .public-event-card h3{margin:6px 0 4px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:1.55rem;font-weight:400;text-transform:uppercase}
-.public-event-card p{margin:0;color:#625866;font-size:.8rem}.public-event-card small{display:block;margin-top:7px;color:#817686;line-height:1.4}
+.public-event-card p{margin:0;color:#625866;font-size:.8rem}.public-event-card small{display:block;margin-top:7px;color:#756a7a;line-height:1.4}
 .event-type-pill{color:#a74419;font-size:.58rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
 @media(min-width:760px){.hero-crest{width:132px!important;height:132px!important}.public-event-list{grid-template-columns:1fr 1fr}.public-event-card{grid-template-columns:120px 1fr}}

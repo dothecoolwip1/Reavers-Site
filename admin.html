@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>Team Admin | Red Deer Reavers</title>
   <link rel="icon" href="assets/reavers-logo.jpg" type="image/jpeg">
-  <link rel="stylesheet" href="admin.css?v=11">
+  <link rel="stylesheet" href="admin.css?v=12">
 </head>
 <body>
   <main class="admin-shell">
@@ -51,6 +51,7 @@
           <button type="button" data-tab-button="roster">Roster</button>
           <button type="button" data-tab-button="practices">Practices</button>
           <button type="button" data-tab-button="community">Community</button>
+          <button type="button" data-tab-button="promo">Promo</button>
           <button type="button" data-tab-button="settings">Settings</button>
         </nav>
 
@@ -99,6 +100,20 @@
           <div class="manage-list inquiry-list" data-community-inquiries></div>
         </section>
 
+        <section class="tab-panel" data-tab-panel="promo" hidden>
+          <div class="panel-heading">
+            <div><p class="kicker">PROMO TOOLS</p><h2>QR codes</h2></div>
+            <button type="button" class="ghost-button" data-print-promo>Print sheet</button>
+          </div>
+          <p class="panel-note">These QR codes are generated automatically during every site build, so they always point at the live Reavers pages.</p>
+          <div class="promo-qr-grid" data-promo-sheet>
+            <article class="promo-qr-card"><img src="assets/generated/qr/home.svg" alt="QR code for the Red Deer Reavers home page"><div><strong>Reavers website</strong><span>Main team website</span><a href="assets/generated/qr/home.svg" download="reavers-website-qr.svg">Download SVG</a></div></article>
+            <article class="promo-qr-card"><img src="assets/generated/qr/join.svg" alt="QR code for joining the Red Deer Reavers"><div><strong>Join the team</strong><span>Training and newcomer page</span><a href="assets/generated/qr/join.svg" download="reavers-join-qr.svg">Download SVG</a></div></article>
+            <article class="promo-qr-card"><img src="assets/generated/qr/community.svg" alt="QR code for booking the Red Deer Reavers"><div><strong>Book the Reavers</strong><span>Community inquiry form</span><a href="assets/generated/qr/community.svg" download="reavers-community-qr.svg">Download SVG</a></div></article>
+            <article class="promo-qr-card"><img src="assets/generated/qr/events.svg" alt="QR code for Red Deer Reavers events"><div><strong>Events</strong><span>Upcoming public schedule</span><a href="assets/generated/qr/events.svg" download="reavers-events-qr.svg">Download SVG</a></div></article>
+          </div>
+        </section>
+
         <section class="tab-panel" data-tab-panel="settings" hidden>
           <div class="panel-heading"><div><p class="kicker">SITE</p><h2>Basic settings</h2></div></div>
           <form class="settings-form" data-settings-form>
@@ -126,7 +141,8 @@
   </dialog>
 
   <div class="toast" data-toast role="status" aria-live="polite"></div>
-  <script src="team-data.js?v=10"></script>
-  <script src="admin.js?v=10" defer></script>
+  <script src="team-data.js?v=12"></script>
+  <script src="vendor/sortable/Sortable.min.js?v=12" defer></script>
+  <script src="admin.js?v=12" defer></script>
 </body>
 </html>
