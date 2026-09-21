@@ -1,7 +1,7 @@
 (()=>{
   const API=window.REAVERS_API||"https://oztfcnrwrovzasftsdwa.supabase.co/functions/v1/reavers-site-api";
   const tokenKey="reaversAdminToken";
-  const state={data:null,calendarMonth:new Date(new Date().getFullYear(),new Date().getMonth(),1),editor:null};
+  const state={data:null,calendarMonth:new Date(new Date().getFullYear(),new Date().getMonth(),1),editor:null,rosterSortable:null};
   const $=(selector,root=document)=>root.querySelector(selector);
   const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
   const esc=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]));
@@ -96,7 +96,27 @@
     const list=$("[data-roster-manage-list]");
     const roster=[...(state.data?.roster||[])].sort((a,b)=>(Number(a.sort_order)||0)-(Number(b.sort_order)||0)||String(a.name).localeCompare(String(b.name)));
     if(!roster.length){list.innerHTML='<div class="empty-state">No roster members yet.</div>';return}
-    list.innerHTML=roster.map(m=>`<article class="manage-row">${m.photo_url?`<img class="member-thumb" src="${esc(m.photo_url)}" alt="">`:`<img class="member-thumb placeholder" src="assets/reavers-logo.jpg" alt="">`}<div class="manage-row-main"><strong>${esc(m.name)}</strong><span>${esc(m.role||"Team member")}${m.discipline?` · ${esc(m.discipline)}`:""}${m.experience_years!==null&&m.experience_years!==undefined?` · ${esc(m.experience_years)}+ yrs`:""}</span>${m.affiliations?`<small>${esc(m.affiliations)}</small>`:""}${m.is_example?'<span class="badge">SAMPLE PROFILE</span>':""}${!m.active?'<span class="badge inactive">NOT SHOWN</span>':'<span class="badge visible">SHOWN ON SITE</span>'}</div><div class="manage-row-actions"><button type="button" class="small-button" data-edit-roster="${esc(m.id)}">Edit</button><button type="button" class="small-button delete" data-delete-roster="${esc(m.id)}">Delete</button></div></article>`).join("");
+    list.innerHTML=roster.map(m=>`<article class="manage-row" data-roster-id="${esc(m.id)}">${m.photo_url?`<img class="member-thumb" src="${esc(m.photo_url)}" alt="">`:`<img class="member-thumb placeholder" src="assets/reavers-logo.jpg" alt="">`}<div class="manage-row-main"><strong>${esc(m.name)}</strong><span>${esc(m.role||"Team member")}${m.discipline?` · ${esc(m.discipline)}`:""}${m.experience_years!==null&&m.experience_years!==undefined?` · ${esc(m.experience_years)}+ yrs`:""}</span>${m.affiliations?`<small>${esc(m.affiliations)}</small>`:""}${m.is_example?'<span class="badge">SAMPLE PROFILE</span>':""}${!m.active?'<span class="badge inactive">NOT SHOWN</span>':'<span class="badge visible">SHOWN ON SITE</span>'}</div><div class="manage-row-actions"><button type="button" class="visibility-button ${m.active?"is-visible":""}" data-toggle-roster="${esc(m.id)}" aria-pressed="${m.active?"true":"false"}">${m.active?"Shown":"Not shown"}</button><button type="button" class="small-button drag-handle" aria-label="Drag ${esc(m.name)} to reorder" title="Drag to reorder">↕</button><button type="button" class="small-button" data-edit-roster="${esc(m.id)}">Edit</button><button type="button" class="small-button delete" data-delete-roster="${esc(m.id)}">Delete</button></div></article>`).join("");
+    setupRosterSorting(list);
+  }
+
+  function setupRosterSorting(list){
+    if(state.rosterSortable){state.rosterSortable.destroy();state.rosterSortable=null}
+    if(!window.Sortable||!list||list.children.length<2)return;
+    state.rosterSortable=window.Sortable.create(list,{
+      animation:160,
+      handle:".drag-handle",
+      ghostClass:"drag-ghost",
+      chosenClass:"drag-chosen",
+      onEnd:async()=>{
+        const ids=$("[data-roster-id]",list).map(row=>row.dataset.rosterId);
+        try{
+          await api({action:"roster_reorder",ids});
+          await loadData();
+          showToast("Roster order saved");
+        }catch(error){showToast(error.message)}
+      }
+    });
   }
 
   function renderPractices(){
@@ -230,6 +250,17 @@
     const editRoster=event.target.closest("[data-edit-roster]");if(editRoster){const item=state.data.roster.find(x=>x.id===editRoster.dataset.editRoster);if(item)openEditor("roster",item);return}
     const editPractice=event.target.closest("[data-edit-practice]");if(editPractice){const item=state.data.practices.find(x=>x.id===editPractice.dataset.editPractice);if(item)openEditor("practice",item);return}
     const deleteEvent=event.target.closest("[data-delete-event]");if(deleteEvent){deleteItem("event",deleteEvent.dataset.deleteEvent);return}
+    const toggleRoster=event.target.closest("[data-toggle-roster]");if(toggleRoster){
+      const item=state.data.roster.find(x=>x.id===toggleRoster.dataset.toggleRoster);
+      if(item){
+        toggleRoster.disabled=true;
+        api({action:"roster_save",item:{...item,active:!item.active}})
+          .then(()=>loadData())
+          .then(()=>showToast(item.active?"Removed from public Team page":"Shown on public Team page"))
+          .catch(error=>{toggleRoster.disabled=false;showToast(error.message)});
+      }
+      return;
+    }
     const deleteRoster=event.target.closest("[data-delete-roster]");if(deleteRoster){deleteItem("roster",deleteRoster.dataset.deleteRoster);return}
     const deletePractice=event.target.closest("[data-delete-practice]");if(deletePractice){deleteItem("practice",deletePractice.dataset.deletePractice);return}
     const deleteInquiry=event.target.closest("[data-delete-inquiry]");if(deleteInquiry){
@@ -251,6 +282,8 @@
   $("[data-dialog-close]").addEventListener("click",closeEditor);
   $("[data-dialog-cancel]").addEventListener("click",closeEditor);
   $("[data-dialog-delete]").addEventListener("click",()=>{if(state.editor?.item)deleteItem(state.editor.type,state.editor.item.id)});
+  $("[data-print-promo]")?.addEventListener("click",()=>window.print());
+
   $("[data-settings-form]").addEventListener("submit",async event=>{
     event.preventDefault();const fd=new FormData(event.currentTarget);const item=Object.fromEntries(fd.entries());
     try{await api({action:"settings_save",item});await loadData();showToast("Settings saved")}catch(error){showToast(error.message)}
