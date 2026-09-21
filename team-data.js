@@ -74,6 +74,8 @@
         title: item.title,
         type: item.event_type,
         rawDate: item.event_date,
+        rawStartTime: item.start_time ? String(item.start_time).slice(0, 5) : "",
+        rawEndTime: item.end_time ? String(item.end_time).slice(0, 5) : "",
         date: displayDate(item.event_date),
         startTime: formatClock(item.start_time),
         endTime: formatClock(item.end_time),
