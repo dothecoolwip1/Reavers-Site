@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <title>Team Admin | Red Deer Reavers</title>
   <link rel="icon" href="assets/reavers-logo.jpg" type="image/jpeg">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin.css?v=11">
 </head>
 <body>
   <main class="admin-shell">
@@ -50,6 +50,7 @@
           <button type="button" class="active" data-tab-button="calendar">Calendar</button>
           <button type="button" data-tab-button="roster">Roster</button>
           <button type="button" data-tab-button="practices">Practices</button>
+          <button type="button" data-tab-button="community">Community</button>
           <button type="button" data-tab-button="settings">Settings</button>
         </nav>
 
@@ -76,7 +77,7 @@
             <div><p class="kicker">TEAM</p><h2>Roster</h2></div>
             <button type="button" class="primary-button" data-add-roster>+ Add person</button>
           </div>
-          <p class="panel-note">The sample people are clearly marked. Replace them with real members whenever you are ready.</p>
+          <p class="panel-note">Keep everyone here. Use Show on website for each person so the public Team page only includes members who want a profile.</p>
           <div class="manage-list roster-manage-list" data-roster-manage-list></div>
         </section>
 
@@ -87,6 +88,15 @@
           </div>
           <p class="panel-note">Change a weekday, time, venue, fee, or temporarily hide a practice without touching the website code.</p>
           <div class="manage-list" data-practice-manage-list></div>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="community" hidden>
+          <div class="panel-heading">
+            <div><p class="kicker">COMMUNITY</p><h2>Inquiries</h2></div>
+            <span class="inquiry-count" data-community-count></span>
+          </div>
+          <p class="panel-note">Schools, events, birthdays, community groups, and partnership requests submitted from the public Community page appear here.</p>
+          <div class="manage-list inquiry-list" data-community-inquiries></div>
         </section>
 
         <section class="tab-panel" data-tab-panel="settings" hidden>
