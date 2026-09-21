@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - integrate-open-source-tooling
   workflow_dispatch:
 
 permissions:
