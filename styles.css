@@ -701,3 +701,5 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .event-status .hub-live small,.results-empty .hub-live small{color:#625866}
 .public-event-card small{color:#756a7a}
 .footer-meta{color:#958a99}
+
+.results-empty .hub-empty small{color:#625866}
