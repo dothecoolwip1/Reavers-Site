@@ -686,3 +686,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(min-width:1000px){
   .desktop-nav{gap:18px}
 }
+
+.event-calendar{margin-top:14px;min-height:42px}
+.event-calendar add-to-calendar-button{--btn-background:#171019;--btn-text:#fff}
+.gallery-button{display:block;text-decoration:none}
+.pswp__counter{font-weight:800}
