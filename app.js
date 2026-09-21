@@ -77,7 +77,23 @@
   const eventList = document.querySelector("[data-event-list]");
   if (eventList) {
     const events = TEAM.events || [];
-    eventList.innerHTML = events.length ? events.map(event => `<article class="public-event-card"><div class="public-event-date"><strong>${escapeHtml(event.date)}</strong>${event.startTime ? `<span>${escapeHtml(event.startTime)}${event.endTime ? ` to ${escapeHtml(event.endTime)}` : ""}</span>` : ""}</div><div><span class="event-type-pill">${escapeHtml(event.type || "event")}</span><h3>${escapeHtml(event.title)}</h3>${event.location ? `<p>${escapeHtml(event.location)}</p>` : ""}${event.details ? `<small>${escapeHtml(event.details)}</small>` : ""}</div></article>`).join("") : `<div class="roster-empty"><strong>No dates are posted yet.</strong><p>Confirmed tournaments, demos and team events will appear here automatically when they are added by the team.</p></div>`;
+    eventList.innerHTML = events.length ? events.map(event => {
+      const calendar = event.rawDate ? `<div class="event-calendar"><add-to-calendar-button
+        name="${escapeHtml(event.title)}"
+        description="${escapeHtml(event.details || "Red Deer Reavers event")}"
+        startDate="${escapeHtml(event.rawDate)}"
+        ${event.rawStartTime ? `startTime="${escapeHtml(event.rawStartTime)}"` : ""}
+        ${event.rawEndTime ? `endTime="${escapeHtml(event.rawEndTime)}"` : ""}
+        ${event.location ? `location="${escapeHtml(event.location)}"` : ""}
+        timeZone="America/Edmonton"
+        options="['Apple','Google','iCal','Microsoft365','Outlook.com','Yahoo']"
+        listStyle="modal"
+        trigger="click"
+        size="1"
+        lightMode="light"
+      ></add-to-calendar-button></div>` : "";
+      return `<article class="public-event-card"><div class="public-event-date"><strong>${escapeHtml(event.date)}</strong>${event.startTime ? `<span>${escapeHtml(event.startTime)}${event.endTime ? ` to ${escapeHtml(event.endTime)}` : ""}</span>` : ""}</div><div><span class="event-type-pill">${escapeHtml(event.type || "event")}</span><h3>${escapeHtml(event.title)}</h3>${event.location ? `<p>${escapeHtml(event.location)}</p>` : ""}${event.details ? `<small>${escapeHtml(event.details)}</small>` : ""}${calendar}</div></article>`;
+    }).join("") : `<div class="roster-empty"><strong>No dates are posted yet.</strong><p>Confirmed tournaments, demos and team events will appear here automatically when they are added by the team.</p></div>`;
   }
 
   const updatesEl = document.querySelector("[data-team-updates]");
@@ -106,45 +122,6 @@
     const count = (TEAM.roster || []).length;
     el.textContent = count ? String(count) : "Team";
   });
-
-  const galleryImages = Array.from({ length: 22 }, (_, i) => `assets/gallery/image (${i + 1}).jpg`);
-  const galleryGrid = document.querySelector("[data-gallery-grid]");
-  const galleryDialog = document.querySelector("[data-gallery-dialog]");
-  const galleryImage = document.querySelector("[data-gallery-image]");
-  const galleryCaption = document.querySelector("[data-gallery-caption]");
-  let galleryIndex = 0;
-  function renderGallery(index) {
-    if (!galleryDialog || !galleryImage || !galleryCaption) return;
-    galleryIndex = (index + galleryImages.length) % galleryImages.length;
-    galleryImage.src = galleryImages[galleryIndex];
-    galleryImage.alt = `Red Deer Reavers photo ${galleryIndex + 1}`;
-    galleryCaption.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
-  }
-  function openGallery(index) {
-    renderGallery(index);
-    if (galleryDialog && !galleryDialog.open) galleryDialog.showModal();
-  }
-  if (galleryGrid) {
-    galleryGrid.innerHTML = galleryImages.map((src, index) => `<button class="gallery-button" type="button" data-gallery-index="${index}" aria-label="Open Reavers photo ${index + 1}"><img src="${src}" alt="Red Deer Reavers photo ${index + 1}" loading="${index < 2 ? "eager" : "lazy"}" decoding="async"></button>`).join("");
-    galleryGrid.addEventListener("click", event => {
-      const button = event.target.closest("[data-gallery-index]");
-      if (button) openGallery(Number(button.dataset.galleryIndex));
-    });
-  }
-  document.querySelector("[data-gallery-close]")?.addEventListener("click", () => galleryDialog?.close());
-  document.querySelector("[data-gallery-prev]")?.addEventListener("click", () => renderGallery(galleryIndex - 1));
-  document.querySelector("[data-gallery-next]")?.addEventListener("click", () => renderGallery(galleryIndex + 1));
-  galleryDialog?.addEventListener("click", event => { if (event.target === galleryDialog) galleryDialog.close(); });
-  galleryDialog?.addEventListener("keydown", event => { if (event.key === "ArrowLeft") renderGallery(galleryIndex - 1); if (event.key === "ArrowRight") renderGallery(galleryIndex + 1); });
-  let touchX = null;
-  galleryDialog?.addEventListener("touchstart", event => { touchX = event.changedTouches[0]?.clientX ?? null; }, { passive: true });
-  galleryDialog?.addEventListener("touchend", event => {
-    if (touchX === null) return;
-    const endX = event.changedTouches[0]?.clientX ?? touchX;
-    const delta = endX - touchX;
-    if (Math.abs(delta) > 55) renderGallery(galleryIndex + (delta < 0 ? 1 : -1));
-    touchX = null;
-  }, { passive: true });
 
   const joinForm = document.querySelector("[data-join-form]");
   joinForm?.addEventListener("submit", event => {
@@ -206,6 +183,6 @@
   });
 
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js?v=11", { updateViaCache: "none" }).then(registration => registration.update()).catch(() => {}));
+    window.addEventListener("load", () => navigator.serviceWorker.register("sw.js?v=12", { updateViaCache: "none" }).then(registration => registration.update()).catch(() => {}));
   }
 })();
