@@ -691,3 +691,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .event-calendar add-to-calendar-button{--btn-background:#171019;--btn-text:#fff}
 .gallery-button{display:block;text-decoration:none}
 .pswp__counter{font-weight:800}
+
+/* WCAG AA contrast corrections surfaced by Pa11y */
+.section.light .eyebrow,.season-section .eyebrow{color:#8a3300}
+.section.light .section-head p:last-child,.season-section .section-head p:last-child{color:#625866}
+.info-card .index{color:#a74419}
+.stat span{color:#625866}
+.event-status .hub-kicker,.results-empty .hub-kicker{color:#9b4318}
+.event-status .hub-live small,.results-empty .hub-live small{color:#625866}
+.public-event-card small{color:#756a7a}
+.footer-meta{color:#958a99}
