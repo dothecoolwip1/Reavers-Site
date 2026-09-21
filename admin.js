@@ -109,7 +109,7 @@
       ghostClass:"drag-ghost",
       chosenClass:"drag-chosen",
       onEnd:async()=>{
-        const ids=$("[data-roster-id]",list).map(row=>row.dataset.rosterId);
+        const ids=Array.from(list.querySelectorAll("[data-roster-id]")).map(row=>row.dataset.rosterId);
         try{
           await api({action:"roster_reorder",ids});
           await loadData();
