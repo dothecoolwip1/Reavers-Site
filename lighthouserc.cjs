@@ -3,6 +3,7 @@ module.exports = {
     collect: {
       staticDistDir: "./_site",
       maxAutodiscoverUrls: 10,
+      autodiscoverUrlBlocklist: ["/admin.html", "/404.html"],
       numberOfRuns: 1,
       settings: {
         chromeFlags: "--headless=new --no-sandbox"
