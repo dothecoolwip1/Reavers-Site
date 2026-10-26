@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://reddeerreavers.com/:path*",
+      "permanent": true
+    }
+  ]
+}
