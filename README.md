@@ -1,4 +1,6 @@
-# Red Deer Reavers website
+# Red Deer Reavers website (retired copy)
+
+> **Retired.** The live team site is https://reddeerreavers.com/, built from the `Red-deer-reavers` repository. Every page here (GitHub Pages and Vercel) forwards to the same page there. Make changes in `Red-deer-reavers`, not here.
 
 Public team website and lightweight team administration for the Red Deer Reavers in Central Alberta.
 
